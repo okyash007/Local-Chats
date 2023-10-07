@@ -5,7 +5,7 @@ const Chats = () => {
   const param = useParams();
   console.log(param.id);
 
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useState(JSON.parse(localStorage.getItem(param.id)) || []);
 
   let texts = [];
   texts = JSON.parse(localStorage.getItem(param.id));
@@ -21,7 +21,7 @@ const Chats = () => {
     });
   }
 
-  function deletChat(index){
+  function deletChat(index) {
     setChats((c) => {
       const newChats = [...c];
       newChats.splice(index, 1);
@@ -42,15 +42,24 @@ const Chats = () => {
 
   return (
     <div className="w-3/4 flex flex-col h-screen">
-      <div className="h-full mx-4 mt-4 overflow-y-auto bg-[#1f1f1f] rounded-lg">
-        <div className="bg-[#1f1f1f] h-full rounded-lg">
-          <div className="">
+      <div className="h-full mx-4 mt-4 overflow-y-auto bg-[#1f1f1f]  rounded-lg">
+        <div className="bg-[#1f1f1f] h-full  rounded-lg">
+          <div>
             {texts &&
-              texts.map((m, index) => (
-                <div className="p-4 relative" key={index}>
-                  <button className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full left-6 text-xs cursor-default">{m.time.date + " " + m.time.time}</button>
-                  <button className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full right-6 text-xs cursor-default" onClick={()=>deletChat(index)}>delet</button>
-                  <p className="border-dashed border-2 border-[#535353] p-2 px-3 pb-4 rounded-lg">{m.chat}</p>
+              texts.map((m, i) => (
+                <div className="p-4 relative" key={i}>
+                  <button className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full left-6 text-xs cursor-default">
+                    {m.time.date + " " + m.time.time}
+                  </button>
+                  <button
+                    className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full right-6 text-xs cursor-default"
+                    onClick={() => deletChat(i)}
+                  >
+                    delet
+                  </button>
+                  <p className="border-dashed border-2 border-[#535353] p-2 px-3 pb-4 rounded-lg">
+                    {m.chat}
+                  </p>
                 </div>
               ))}
           </div>
