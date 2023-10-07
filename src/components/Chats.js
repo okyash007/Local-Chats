@@ -21,6 +21,15 @@ const Chats = () => {
     });
   }
 
+  function deletChat(index){
+    setChats((c) => {
+      const newChats = [...c];
+      newChats.splice(index, 1);
+      localStorage.setItem(param.id, JSON.stringify(newChats));
+      return newChats;
+    });
+  }
+
   function getCurrentDateTime() {
     const now = new Date();
     const date = now.toLocaleDateString();
@@ -37,9 +46,10 @@ const Chats = () => {
         <div className="bg-[#1f1f1f] h-full rounded-lg">
           <div className="">
             {texts &&
-              texts.map((m) => (
-                <div className="p-4 relative">
-                  <button className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full right-6 text-xs cursor-default">{m.time.date + " " + m.time.time}</button>
+              texts.map((m, index) => (
+                <div className="p-4 relative" key={index}>
+                  <button className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full left-6 text-xs cursor-default">{m.time.date + " " + m.time.time}</button>
+                  <button className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full right-6 text-xs cursor-default" onClick={()=>deletChat(index)}>delet</button>
                   <p className="border-dashed border-2 border-[#535353] p-2 px-3 pb-4 rounded-lg">{m.chat}</p>
                 </div>
               ))}
