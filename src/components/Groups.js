@@ -34,7 +34,7 @@ const Groups = () => {
           placeholder="Group Name"
         />{" "}
         <button
-          className="bg-[#272727] p-2 px-4 rounded-full text-white text-sm font-semibold"
+          className="bg-[#272727] p-2 px-4 rounded-full text-white text-sm font-semibold hover:bg-purple-700 transition duration-300 ease-in-out"
           onClick={() => {
             if (inputRef.current.value.trim() != "") {
               createButton({ btn: inputRef.current.value });
@@ -53,7 +53,7 @@ const Groups = () => {
             <div key={index} className="mb-2 flex w-full">
               
               <button
-                className="text-white p-2 w-full px-4 rounded-full bg-[#333333]"
+                className="text-white p-2 w-full px-4 rounded-full bg-[#333333] hover:bg-blue-700 transition duration-300 ease-in-out"
                 onClick={() => navigate("/" + i.btn)}
               >
                 {i.btn}
@@ -63,7 +63,7 @@ const Groups = () => {
                   deletButton(index);
                   navigate("/");
                 }}
-                className="p-2 px-4 rounded-full bg-[#333333] ml-2"
+                className="p-2 px-4 rounded-full bg-[#333333] ml-2 hover:bg-red-700 transition duration-300 ease-in-out"
               >
                 delet
               </button>

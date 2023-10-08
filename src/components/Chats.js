@@ -49,19 +49,21 @@ const Chats = () => {
           <div>
             {texts &&
               texts.map((m, i) => (
-                <div className="p-4 relative" key={i}>
-                  <button className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full left-6 text-xs cursor-default">
-                    {m.time.date + " " + m.time.time}
-                  </button>
-                  <button
-                    className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full right-6 text-xs cursor-default"
-                    onClick={() => deletChat(i)}
-                  >
-                    delet
-                  </button>
-                  <p className="border-dashed border-2 border-[#535353] p-2 px-3 pb-4 rounded-lg">
-                    {m.chat}
-                  </p>
+                <div>
+                  <div className="p-4 relative" key={i}>
+                    <button className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full left-6 text-xs cursor-default">
+                      {m.time.date + " " + m.time.time}
+                    </button>
+                    <button
+                      className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full right-6 text-xs hover:bg-red-700 transition duration-300 ease-in-out"
+                      onClick={() => deletChat(i)}
+                    >
+                      delet
+                    </button>
+                    <p className="border-dashed border-2 border-[#535353] p-2 px-3 pb-4 rounded-lg ">
+                      {m.chat}
+                    </p>
+                  </div>
                 </div>
               ))}
           </div>
@@ -74,7 +76,7 @@ const Chats = () => {
           rows="7"
         ></textarea>
         <button
-          className="absolute right-5 m-3 bg-[#333333] p-2 px-4 rounded-full"
+          className="absolute right-5 m-3 bg-[#333333] p-2 px-4 rounded-full hover:bg-white hover:text-black hover:shadow-white hover:shadow-2xl sha sha transition duration-300 ease-in-out"
           onClick={() => {
             if (texts == null) {
               setChats([]);
