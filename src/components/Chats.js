@@ -5,7 +5,9 @@ const Chats = () => {
   const param = useParams();
   console.log(param.id);
 
-  const [chats, setChats] = useState(JSON.parse(localStorage.getItem(param.id)) || []);
+  const [chats, setChats] = useState(
+    JSON.parse(localStorage.getItem(param.id)) || []
+  );
 
   let texts = [];
   texts = JSON.parse(localStorage.getItem(param.id));
@@ -80,7 +82,12 @@ const Chats = () => {
               setChats(JSON.parse(localStorage.getItem(param.id)));
             }
             let time = getCurrentDateTime();
-            addChat({ chat: inputRef.current.value, time });
+
+            if (inputRef.current.value.trim() != "") {
+              addChat({ chat: inputRef.current.value, time });
+            }
+
+            inputRef.current.value = "";
           }}
         >
           text
