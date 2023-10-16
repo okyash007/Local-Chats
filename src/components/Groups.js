@@ -53,9 +53,9 @@ const Groups = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-80 min-h-full bg-[#151515] text-base-content">
+          <ul className=" p-0 border-r-2 border-[#333333] border-dashed w-64 min-h-full bg-[#151515] ">
             {/* Sidebar content here */}
-            <div className="flex flex-col justify-center m-3 border-b-2 border-dashed border-[#333333] pb-4 ">
+            <div className="flex flex-col justify-center m-3 border-b-2 border-dashed border-[#333333] pb-4 z-50 ">
               <input
                 ref={inputRef}
                 type="text"
