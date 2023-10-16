@@ -43,7 +43,7 @@ const Chats = () => {
   }
 
   return (
-    <div className="w-3/4 flex flex-col h-screen">
+    <div className="w-full flex flex-col h-screen">
       <div className="h-full mx-4 mt-4 overflow-y-auto bg-[#1f1f1f]  rounded-lg">
         <div className="bg-[#1f1f1f] h-full  rounded-lg">
           <div>
@@ -59,6 +59,9 @@ const Chats = () => {
                       onClick={() => deletChat(i)}
                     >
                       delet
+                    </button>
+                    <button className="bg-[#333333] absolute bottom-1 p-1 px-2 rounded-full right-20 text-xs hover:bg-blue  -700 transition duration-300 ease-in-out">
+                      edit
                     </button>
                     <p className="border-dashed border-2 border-[#535353] p-2 px-3 pb-4 rounded-lg ">
                       {m.chat}
